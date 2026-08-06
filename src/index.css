@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #FAF7F2;
+  --color-cream-soft: #F3EEE6;
+
+  --color-ink: #2B2620;
+  --color-ink-muted: #8A8175;
+  --color-ink-faint: #B7AFA2;
+
+  --color-clay-50: #FBF1EA;
+  --color-clay-100: #F3DECB;
+  --color-clay-400: #C87F45;
+  --color-clay-500: #B8622E;
+  --color-clay-600: #9C4F24;
+  --color-clay-700: #7C3E1B;
+
+  --color-sage-400: #7C8B67;
+  --color-sage-500: #5F6E4C;
+
+  --color-line: #E8E1D6;
+
+  --font-display: "Fraunces", serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+
+  --shadow-card: 0 2px 10px rgba(43, 38, 32, 0.06);
+  --shadow-lift: 0 12px 30px rgba(43, 38, 32, 0.12);
+
+  --radius-xl2: 1.25rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-cream text-ink font-sans antialiased;
+}
+
+h1, h2, h3, h4 {
+  @apply font-display;
+}
+
+* {
+  @apply focus-visible:outline  focus-visible:outline-offset-2 focus-visible:outline-clay-500;
+}
+
+.container-px {
+  @apply px-6 md:px-10 lg:px-16;
+}
+
+.btn-primary {
+  @apply inline-flex items-center justify-center gap-2 bg-clay-500 text-white px-6 py-3 rounded-md font-medium hover:bg-clay-600 transition-colors;
+}
+
+.btn-secondary {
+  @apply inline-flex items-center justify-center gap-2 bg-transparent border border-ink text-ink px-6 py-3 rounded-md font-medium hover:bg-ink hover:text-white transition-colors;
+}
+
+.btn-outline-cream {
+  @apply inline-flex items-center justify-center gap-2 bg-white border border-line text-ink px-6 py-3 rounded-md font-medium hover:border-ink transition-colors;
+}
+
+.input-field {
+  @apply w-full rounded-md border border-line bg-white px-4 py-3 text-sm text-ink placeholder:text-ink-faint focus:border-clay-500 outline-none transition-colors;
+}
+
+.label-eyebrow {
+  @apply text-xs font-semibold tracking-[0.18em] uppercase text-clay-500;
+}

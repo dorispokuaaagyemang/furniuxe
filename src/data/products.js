@@ -1,0 +1,98 @@
+export const categories = [
+  { id: 'living-room', name: 'Living Room', count: 32 },
+  { id: 'bedroom', name: 'Bedroom', count: 24 },
+  { id: 'dining-room', name: 'Dining Room', count: 18 },
+  { id: 'office', name: 'Office', count: 20 },
+  { id: 'outdoor', name: 'Outdoor', count: 15 },
+]
+
+export const products = [
+  {
+    id: 'accent-chair',
+    name: 'Modern Accent Chair',
+    category: 'living-room',
+    price: 299,
+    rating: 4.5,
+    reviews: 128,
+    badge: 'Best Seller',
+    colors: ['#E8DCCB', '#3A3A3A', '#6B7D5A', '#1F1B17'],
+    description:
+      'This accent chair combines modern design with exceptional comfort. The luxurious fabric and ergonomic backrest provide optimal support for long hours of relaxation.',
+    specs: { Dimensions: '75cm (W) x 76cm (D) x 80cm (H)', Material: 'Premium Fabric, Solid Wood Legs', Weight: '12kg', Assembly: 'Required' },
+  },
+  {
+    id: 'oak-dining-table',
+    name: 'Oak Dining Table',
+    category: 'dining-room',
+    price: 699,
+    rating: 4.4,
+    reviews: 84,
+    description: 'A sturdy oak dining table with a warm natural finish, built to anchor family meals for years to come.',
+    specs: { Dimensions: '160cm (W) x 90cm (D) x 75cm (H)', Material: 'Solid Oak Wood', Weight: '38kg', Assembly: 'Required' },
+  },
+  {
+    id: 'lounge-armchair',
+    name: 'Lounge Armchair',
+    category: 'living-room',
+    price: 399,
+    rating: 4.6,
+    reviews: 76,
+    description: 'A relaxed lounge armchair with a curved silhouette, upholstered in a soft woven fabric.',
+    specs: { Dimensions: '80cm (W) x 85cm (D) x 78cm (H)', Material: 'Woven Fabric, Ash Wood Legs', Weight: '14kg', Assembly: 'Required' },
+  },
+  {
+    id: 'wooden-sideboard',
+    name: 'Wooden Sideboard',
+    category: 'living-room',
+    price: 499,
+    rating: 4.4,
+    reviews: 53,
+    description: 'A minimal sideboard offering generous storage, finished in a warm walnut veneer.',
+    specs: { Dimensions: '160cm (W) x 45cm (D) x 80cm (H)', Material: 'Walnut Veneer, Solid Wood Frame', Weight: '42kg', Assembly: 'Required' },
+  },
+  {
+    id: 'coffee-table',
+    name: 'Round Coffee Table',
+    category: 'living-room',
+    price: 249,
+    rating: 4.5,
+    reviews: 92,
+    description: 'A round coffee table with clean lines, ideal for pairing with any modern sofa.',
+    specs: { Dimensions: '90cm (Diameter) x 40cm (H)', Material: 'Solid Oak Wood', Weight: '16kg', Assembly: 'Minimal' },
+  },
+  {
+    id: 'king-bed-frame',
+    name: 'King Bed Frame',
+    category: 'bedroom',
+    price: 799,
+    rating: 4.6,
+    reviews: 66,
+    description: 'A low-profile king bed frame with an upholstered headboard for a calm, modern bedroom.',
+    specs: { Dimensions: '200cm (W) x 210cm (D) x 110cm (H)', Material: 'Solid Wood, Linen Upholstery', Weight: '55kg', Assembly: 'Required' },
+  },
+  {
+    id: 'l-shaped-sofa',
+    name: 'L-Shaped Sofa',
+    category: 'living-room',
+    price: 1299,
+    rating: 4.6,
+    reviews: 64,
+    badge: 'New',
+    description: 'A deep, cloud-like L-shaped sofa built for family movie nights and lazy Sundays.',
+    specs: { Dimensions: '280cm (W) x 180cm (D) x 85cm (H)', Material: 'Boucle Fabric, Solid Wood Frame', Weight: '68kg', Assembly: 'Required' },
+  },
+  {
+    id: 'wooden-bed-frame',
+    name: 'Wooden Bed Frame',
+    category: 'bedroom',
+    price: 499,
+    rating: 4.5,
+    reviews: 42,
+    description: 'A classic wooden bed frame with a slatted base for better mattress airflow.',
+    specs: { Dimensions: '160cm (W) x 200cm (D) x 90cm (H)', Material: 'Solid Pine Wood', Weight: '34kg', Assembly: 'Required' },
+  },
+]
+
+export function getProductById(id) {
+  return products.find((p) => p.id === id)
+}
