@@ -18,7 +18,7 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-40 bg-cream/95 backdrop-blur border-b border-line">
-      <div className="container-px h-[72px] flex items-center justify-between">
+      <div className="container-px h-18 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2 font-display text-xl font-semibold">
           <Sofa className="text-clay-500" size={24} />
           Furniuxe

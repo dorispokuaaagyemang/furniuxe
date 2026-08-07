@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom'
 import { Sofa, Facebook, Instagram, Twitter } from 'lucide-react'
+import AchorLink from './common/Anchor'
+
 
 export default function Footer() {
   return (
@@ -49,8 +51,8 @@ export default function Footer() {
         <div>
           <h4 className="font-semibold text-white mb-4">Contact</h4>
           <ul className="space-y-2.5 text-sm text-cream/60">
-            <li>123 Furniture Lane, New York, NY 10001</li>
-            <li>+1 (888) 123-4567</li>
+            <li> Adum-kumasi, Ashanti Region </li>
+            <li> <AchorLink link={"tel:00233257624221"}>call us on </AchorLink> </li>
             <li>support@furniuxe.com</li>
           </ul>
         </div>
