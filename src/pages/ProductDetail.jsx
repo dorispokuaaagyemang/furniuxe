@@ -25,6 +25,7 @@ export default function ProductDetail() {
   const [color, setColor] = useState(colorOptions[0])
   const [tab, setTab] = useState('Description')
   const [added, setAdded] = useState(false)
+  const [activeImage, setActiveImage] = useState(0)
 
   if (!product) {
     return (
@@ -36,7 +37,7 @@ export default function ProductDetail() {
   }
 
   function handleAddToCart() {
-    addToCart({ id: product.id, name: product.name, price: product.price, color: 'Selected' }, qty)
+    addToCart({ id: product.id, name: product.name, price: product.price, image: product.image, color: 'Selected' }, qty)
     setAdded(true)
     setTimeout(() => setAdded(false), 1800)
   }
@@ -49,14 +50,26 @@ export default function ProductDetail() {
         {/* Gallery */}
         <div className="flex gap-4">
           <div className="hidden sm:flex flex-col gap-3">
-            {[0, 1, 2].map((i) => (
-              <button key={i} className="w-16 h-16 rounded-lg overflow-hidden border border-line hover:border-clay-500">
-                <Placeholder icon="chair" tone={i} className="w-full h-full" />
+            {(product.gallery || [product.image]).map((src, i) => (
+              <button
+                key={src + i}
+                onClick={() => setActiveImage(i)}
+                className={`w-16 h-16 rounded-lg overflow-hidden border transition-colors ${
+                  activeImage === i ? 'border-clay-500' : 'border-line hover:border-clay-500'
+                }`}
+              >
+                <Placeholder src={src} alt={`${product.name} view ${i + 1}`} icon="chair" tone={i} className="w-full h-full" />
               </button>
             ))}
           </div>
           <div className="flex-1 rounded-xl2 overflow-hidden">
-            <Placeholder icon="chair" tone={0} className="w-full aspect-square" />
+            <Placeholder
+              src={(product.gallery || [product.image])[activeImage]}
+              alt={product.name}
+              icon="chair"
+              tone={0}
+              className="w-full aspect-square"
+            />
           </div>
         </div>
 

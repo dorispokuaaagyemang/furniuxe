@@ -94,7 +94,7 @@ export default function Checkout() {
             {items.map((item, i) => (
               <li key={item.id} className="flex items-center gap-3 text-sm">
                 <div className="w-11 h-11 rounded-md overflow-hidden shrink-0">
-                  <Placeholder icon="chair" tone={i} className="w-full h-full" />
+                  <Placeholder src={item.image} alt={item.name} icon="chair" tone={i} className="w-full h-full" />
                 </div>
                 <div className="flex-1">
                   <p className="font-medium leading-tight">{item.name}</p>

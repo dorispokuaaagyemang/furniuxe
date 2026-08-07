@@ -33,7 +33,13 @@ export default function About() {
             ))}
           </ul>
         </div>
-        <Placeholder icon="table" tone={1} className="rounded-xl2 aspect-[4/5] w-full" />
+        <Placeholder
+          src="/images/about/about.jpg"
+          alt="Furniuxe workshop crafting furniture"
+          icon="table"
+          tone={1}
+          className="rounded-xl2 aspect-[4/5] w-full"
+        />
       </div>
     </div>
   )

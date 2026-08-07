@@ -35,7 +35,7 @@ export default function Home() {
               </div>
             </div>
             <div className="relative min-h-[320px] lg:min-h-0">
-              <Placeholder icon="sofa" tone={0} className="w-full h-full" />
+              <Placeholder src="/images/hero/hero.jpg" alt="Modern living room with a beige sofa" icon="sofa" tone={0} className="w-full h-full" />
               <button
                 aria-label="Previous slide"
                 className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 flex items-center justify-center hover:bg-white"
@@ -88,7 +88,13 @@ export default function Home() {
               to="/shop"
               className="group rounded-xl2 overflow-hidden border border-line/70 bg-white hover:shadow-lift transition-shadow"
             >
-              <Placeholder icon={['sofa', 'bed', 'table', 'chair', 'plant'][i % 5]} tone={i} className="aspect-[4/3]" />
+              <Placeholder
+                src={cat.image}
+                alt={cat.name}
+                icon={['sofa', 'bed', 'table', 'chair', 'plant'][i % 5]}
+                tone={i}
+                className="aspect-[4/3]"
+              />
               <div className="p-4">
                 <p className="font-medium text-sm">{cat.name}</p>
                 <p className="text-xs text-ink-muted mt-0.5">{cat.count} Items</p>

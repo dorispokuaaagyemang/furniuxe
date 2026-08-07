@@ -23,7 +23,7 @@ src/
 
 ## Notes
 
-- Product photography is mocked with a lightweight `Placeholder` component (icon + soft gradient) so the app runs with zero external image dependencies. Swap it for real `<img>` tags whenever you have product photos — the props (`icon`, `tone`, `className`) map cleanly to that change.
+- Product photography is mocked with a lightweight `Placeholder` component (icon + soft gradient) so the app runs with zero external image dependencies. It also accepts a `src`/`alt` prop and renders a real `<img>` when one is provided, falling back to the placeholder if the file is missing — see **`IMAGES.md`** for the exact filenames/folders to drop your own photos into.
 - Cart state lives in React context (`CartContext`) and is in-memory only (resets on refresh). Wire it to your backend/localStorage when ready.
 - Running Tailwind CSS v4. There's no `tailwind.config.js` — design tokens (`clay`, `sage`, `ink`, `cream`, fonts, shadows, radius) are defined in the `@theme` block at the top of `src/index.css`. Change them there to re-theme the whole app.
 - Routing uses `react-router-dom` v6, nested under a shared `Layout` (Navbar + Footer).

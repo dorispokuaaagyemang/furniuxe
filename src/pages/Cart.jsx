@@ -39,7 +39,7 @@ export default function Cart() {
                 >
                   <div className="flex items-center gap-4 col-span-2 md:col-span-1">
                     <div className="w-16 h-16 rounded-lg overflow-hidden shrink-0">
-                      <Placeholder icon="chair" tone={i} className="w-full h-full" />
+                      <Placeholder src={item.image} alt={item.name} icon="chair" tone={i} className="w-full h-full" />
                     </div>
                     <div>
                       <p className="font-medium text-sm">{item.name}</p>
