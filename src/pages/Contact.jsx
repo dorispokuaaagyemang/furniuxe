@@ -3,10 +3,10 @@ import { MapPin, Phone, Mail, Clock } from 'lucide-react'
 import Breadcrumb from '../components/Breadcrumb.jsx'
 
 const info = [
-  { icon: MapPin, label: 'Address', value: '123 Furniture Lane, New York, NY 10001' },
-  { icon: Phone, label: 'Phone', value: '+1 (888) 123-4567' },
+  { icon: MapPin, label: 'Address', value: 'Kotwi, Kumasi- Ashanti Region' },
+  { icon: Phone, label: 'Phone', value: '+233257624221' },
   { icon: Mail, label: 'Email', value: 'support@furniuxe.com' },
-  { icon: Clock, label: 'Hours', value: 'Mon – Fri: 9:00 AM – 6:00 PM\nSat – Sun: 10:00 AM – 4:00 PM' },
+  { icon: Clock, label: 'Hours', value: 'Mon - Fri: 9:00 AM - 6:00 PM\nSat - Sun: 10:00 AM - 4:00 PM' },
 ]
 
 export default function Contact() {

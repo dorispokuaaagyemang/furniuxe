@@ -38,7 +38,7 @@ export default function About() {
           alt="Furniuxe workshop crafting furniture"
           icon="table"
           tone={1}
-          className="rounded-xl2 aspect-[4/5] w-full"
+          className="rounded-xl2 aspect-4/5 w-full"
         />
       </div>
     </div>
