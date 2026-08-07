@@ -4,9 +4,9 @@ const CartContext = createContext(null)
 
 export function CartProvider({ children }) {
   const [items, setItems] = useState([
-    { id: 'accent-chair', name: 'Modern Accent Chair', color: 'Beige', price: 299, qty: 1, image: 'chair' },
-    { id: 'oak-dining-table', name: 'Oak Dining Table', size: '160cm', price: 699, qty: 1, image: 'table' },
-    { id: 'coffee-table', name: 'Round Coffee Table', color: 'Natural', price: 249, qty: 1, image: 'coffee' },
+    { id: 'accent-chair', name: 'Modern Accent Chair', color: 'Beige', price: 299, qty: 1, image: '/images/products/accent-chair.jpg' },
+    { id: 'oak-dining-table', name: 'Oak Dining Table', size: '160cm', price: 699, qty: 1, image: '/images/products/oak-dining-table.jpg' },
+    { id: 'coffee-table', name: 'Round Coffee Table', color: 'Natural', price: 249, qty: 1, image: '/images/products/coffee-table.jpg' },
   ])
 
   function addToCart(product, qty = 1) {

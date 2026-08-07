@@ -5,10 +5,10 @@ import Placeholder from '../components/Placeholder.jsx'
 const filters = ['All', 'Living Room', 'Bedroom', 'Dining Room', 'Office', 'Outdoor']
 
 const articles = [
-  { title: '10 Tips for a Cozy Living Room', date: 'May 20, 2024', read: '5 min read', icon: 'sofa' },
-  { title: 'Choosing the Perfect Dining Table', date: 'May 15, 2024', read: '4 min read', icon: 'table' },
-  { title: 'Bedroom Design Ideas for Better Sleep', date: 'May 10, 2024', read: '6 min read', icon: 'bed' },
-  { title: 'Outdoor Furniture Care Guide', date: 'May 5, 2024', read: '3 min read', icon: 'plant' },
+  { title: '10 Tips for a Cozy Living Room', date: 'May 20, 2024', read: '5 min read', icon: 'sofa', image: '/images/articles/cozy-living-room.jpg' },
+  { title: 'Choosing the Perfect Dining Table', date: 'May 15, 2024', read: '4 min read', icon: 'table', image: '/images/articles/dining-table.jpg' },
+  { title: 'Bedroom Design Ideas for Better Sleep', date: 'May 10, 2024', read: '6 min read', icon: 'bed', image: '/images/articles/bedroom-design.jpg' },
+  { title: 'Outdoor Furniture Care Guide', date: 'May 5, 2024', read: '3 min read', icon: 'plant', image: '/images/articles/outdoor-care.jpg' },
 ]
 
 export default function Inspiration() {
@@ -36,7 +36,7 @@ export default function Inspiration() {
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {articles.map((a, i) => (
           <article key={a.title} className="rounded-xl2 overflow-hidden border border-line/70 bg-white group cursor-pointer hover:shadow-lift transition-shadow">
-            <Placeholder icon={a.icon} tone={i} className="aspect-[4/3]" />
+            <Placeholder src={a.image} alt={a.title} icon={a.icon} tone={i} className="aspect-[4/3]" />
             <div className="p-4">
               <h3 className="font-medium text-sm leading-snug group-hover:text-clay-500 transition-colors">{a.title}</h3>
               <p className="text-xs text-ink-muted mt-2">{a.date} · {a.read}</p>

@@ -42,7 +42,7 @@ h1, h2, h3, h4 {
 }
 
 * {
-  @apply focus-visible:outline  focus-visible:outline-offset-2 focus-visible:outline-clay-500;
+  @apply focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-clay-500;
 }
 
 .container-px {

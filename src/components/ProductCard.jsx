@@ -10,7 +10,7 @@ export default function ProductCard({ product, tone = 0 }) {
       className="group block rounded-xl2 bg-white border border-line/70 overflow-hidden hover:shadow-lift transition-shadow"
     >
       <div className="relative aspect-square">
-        <Placeholder icon="chair" tone={tone} className="w-full h-full" />
+        <Placeholder src={product.image} alt={product.name} icon="chair" tone={tone} className="w-full h-full" />
         {product.badge && (
           <span className="absolute top-3 left-3 bg-white/90 text-ink text-[11px] font-semibold px-2.5 py-1 rounded-full">
             {product.badge}
