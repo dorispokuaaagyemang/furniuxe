@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import Breadcrumb from '../components/Breadcrumb.jsx'
 import ProductCard from '../components/ProductCard.jsx'
 import { categories, products } from '../data/products.js'
@@ -6,11 +6,14 @@ import { categories, products } from '../data/products.js'
 const colorSwatches = ['#2B2620', '#B8622E', '#7C8B67', '#3F5A6E', '#E8DCCB', '#FFFFFF']
 const materials = ['Wood', 'Metal', 'Fabric', 'Leather', 'Glass']
 const sortOptions = ['Popular', 'Price: Low to High', 'Price: High to Low', 'Newest']
+const PAGE_SIZE = 6
+const highestPrice = Math.max(...products.map((p) => p.price))
 
 export default function Shop() {
   const [activeCategory, setActiveCategory] = useState('all')
-  const [maxPrice, setMaxPrice] = useState(2000)
+  const [maxPrice, setMaxPrice] = useState(highestPrice)
   const [sort, setSort] = useState('Popular')
+  const [page, setPage] = useState(1)
 
   const filtered = useMemo(() => {
     let list = products.filter((p) => p.price <= maxPrice)
@@ -19,6 +22,15 @@ export default function Shop() {
     if (sort === 'Price: High to Low') list = [...list].sort((a, b) => b.price - a.price)
     return list
   }, [activeCategory, maxPrice, sort])
+
+  // filters changed, so the old page number might not exist anymore
+  useEffect(() => {
+    setPage(1)
+  }, [filtered])
+
+  const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE))
+  const pageStart = (page - 1) * PAGE_SIZE
+  const paginated = filtered.slice(pageStart, pageStart + PAGE_SIZE)
 
   return (
     <div className="container-px py-10">
@@ -61,7 +73,7 @@ export default function Shop() {
             <input
               type="range"
               min={0}
-              max={2000}
+              max={highestPrice}
               value={maxPrice}
               onChange={(e) => setMaxPrice(Number(e.target.value))}
               className="w-full accent-clay-500"
@@ -102,7 +114,9 @@ export default function Shop() {
         {/* Product grid */}
         <div>
           <div className="flex items-center justify-between mb-6">
-            <p className="text-sm text-ink-muted">Showing 1–{filtered.length} of {products.length} products</p>
+            <p className="text-sm text-ink-muted">
+              Showing {filtered.length === 0 ? 0 : pageStart + 1}–{Math.min(pageStart + PAGE_SIZE, filtered.length)} of {filtered.length} products
+            </p>
             <div className="flex items-center gap-2 text-sm">
               <span className="text-ink-muted">Sort by:</span>
               <select
@@ -123,24 +137,27 @@ export default function Shop() {
             </div>
           ) : (
             <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-5">
-              {filtered.map((p, i) => (
+              {paginated.map((p, i) => (
                 <ProductCard key={p.id} product={p} tone={i} />
               ))}
             </div>
           )}
 
-          <div className="flex items-center justify-center gap-2 mt-10">
-            {[1, 2, 3, 4].map((n) => (
-              <button
-                key={n}
-                className={`w-9 h-9 rounded-md text-sm font-medium ${
-                  n === 1 ? 'bg-clay-500 text-white' : 'text-ink-muted hover:bg-cream-soft'
-                }`}
-              >
-                {n}
-              </button>
-            ))}
-          </div>
+          {totalPages > 1 && (
+            <div className="flex items-center justify-center gap-2 mt-10">
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map((n) => (
+                <button
+                  key={n}
+                  onClick={() => setPage(n)}
+                  className={`w-9 h-9 rounded-md text-sm font-medium ${
+                    n === page ? 'bg-clay-500 text-white' : 'text-ink-muted hover:bg-cream-soft'
+                  }`}
+                >
+                  {n}
+                </button>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>

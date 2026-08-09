@@ -1,5 +1,8 @@
 import { Link } from 'react-router-dom'
-import { Sofa, Facebook, Instagram, Twitter } from 'lucide-react'
+import { Sofa, Facebook, Instagram, Twitter, Phone, MessageCircle, Mail } from 'lucide-react'
+
+const phoneNumber = '+18881234567'
+const email = 'support@furniuxe.com'
 
 export default function Footer() {
   return (
@@ -49,9 +52,25 @@ export default function Footer() {
         <div>
           <h4 className="font-semibold text-white mb-4">Contact</h4>
           <ul className="space-y-2.5 text-sm text-cream/60">
-            <li>123 Furniture Lane, New York, NY 10001</li>
-            <li>+1 (888) 123-4567</li>
-            <li>support@furniuxe.com</li>
+            <li>Kotwi, Kumasi- Ashanti Region</li>
+            <li className="flex items-center gap-4">
+              <a href={`tel:${phoneNumber}`} className="flex items-center gap-1.5 hover:text-clay-400">
+                <Phone size={14} /> Call
+              </a>
+              <a
+                href={`https://wa.me/${phoneNumber.replace('+', '')}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 hover:text-clay-400"
+              >
+                <MessageCircle size={14} /> WhatsApp
+              </a>
+            </li>
+            <li>
+              <a href={`mailto:${email}`} className="flex items-center gap-1.5 hover:text-clay-400">
+                <Mail size={14} /> {email}
+              </a>
+            </li>
           </ul>
         </div>
       </div>

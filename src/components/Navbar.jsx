@@ -1,7 +1,8 @@
 import { useState } from 'react'
-import { Link, NavLink } from 'react-router-dom'
-import { Search, User, ShoppingCart, Sofa, Menu, X } from 'lucide-react'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
+import { Search, User, LogOut, ShoppingCart, Sofa, Menu, X } from 'lucide-react'
 import { useCart } from '../context/CartContext.jsx'
+import { useAuth } from '../context/AuthContext.jsx'
 
 const links = [
   { to: '/', label: 'Home' },
@@ -14,11 +15,18 @@ const links = [
 
 export default function Navbar() {
   const { count } = useCart()
+  const { user, logout } = useAuth()
+  const navigate = useNavigate()
   const [open, setOpen] = useState(false)
+
+  function handleLogout() {
+    logout()
+    navigate('/')
+  }
 
   return (
     <header className="sticky top-0 z-40 bg-cream/95 backdrop-blur border-b border-line">
-      <div className="container-px h-[72px] flex items-center justify-between">
+      <div className="container-px h-18 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2 font-display text-xl font-semibold">
           <Sofa className="text-clay-500" size={24} />
           Furniuxe
@@ -43,9 +51,18 @@ export default function Navbar() {
           <button aria-label="Search" className="hidden sm:flex text-ink hover:text-clay-500 transition-colors">
             <Search size={20} />
           </button>
-          <Link to="/login" aria-label="Account" className="hidden sm:flex text-ink hover:text-clay-500 transition-colors">
-            <User size={20} />
-          </Link>
+          {user ? (
+            <div className="hidden sm:flex items-center gap-3">
+              <span className="text-sm font-medium text-ink">{user.name}</span>
+              <button aria-label="Logout" onClick={handleLogout} className="text-ink hover:text-clay-500 transition-colors">
+                <LogOut size={20} />
+              </button>
+            </div>
+          ) : (
+            <Link to="/login" aria-label="Account" className="hidden sm:flex text-ink hover:text-clay-500 transition-colors">
+              <User size={20} />
+            </Link>
+          )}
           <Link to="/cart" aria-label="Cart" className="relative text-ink hover:text-clay-500 transition-colors">
             <ShoppingCart size={20} />
             {count > 0 && (
@@ -57,7 +74,7 @@ export default function Navbar() {
           <button
             aria-label="Toggle menu"
             className="lg:hidden text-ink"
-            onClick={() => setOpen((v) => !v)}
+            onClick={() => setOpen((prev) => !prev)}
           >
             {open ? <X size={22} /> : <Menu size={22} />}
           </button>

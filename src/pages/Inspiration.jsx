@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import Breadcrumb from '../components/Breadcrumb.jsx'
 import Placeholder from '../components/Placeholder.jsx'
 
@@ -8,7 +9,7 @@ const articles = [
   { title: '10 Tips for a Cozy Living Room', date: 'May 20, 2024', read: '5 min read', icon: 'sofa', image: '/images/articles/cozy-living-room.jpg' },
   { title: 'Choosing the Perfect Dining Table', date: 'May 15, 2024', read: '4 min read', icon: 'table', image: '/images/articles/dining-table.jpg' },
   { title: 'Bedroom Design Ideas for Better Sleep', date: 'May 10, 2024', read: '6 min read', icon: 'bed', image: '/images/articles/bedroom-design.jpg' },
-  { title: 'Outdoor Furniture Care Guide', date: 'May 5, 2024', read: '3 min read', icon: 'plant', image: '/images/articles/outdoor-care.jpg' },
+  { title: 'Outdoor Furniture Care Guide', date: 'May 5, 2024', read: '3 min read', icon: 'plant', image: '/images/articles/outdoor-care.jpeg' },
 ]
 
 export default function Inspiration() {
@@ -46,7 +47,7 @@ export default function Inspiration() {
       </div>
 
       <div className="text-center mt-10">
-        <button className="btn-primary">View All Articles</button>
+        <Link to="/shop" className="btn-primary">View All Articles</Link>
       </div>
     </div>
   )

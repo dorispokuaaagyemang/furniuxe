@@ -1,11 +1,14 @@
 import { useState } from 'react'
-import { MapPin, Phone, Mail, Clock } from 'lucide-react'
+import { MapPin, Phone, MessageCircle, Mail, Clock } from 'lucide-react'
 import Breadcrumb from '../components/Breadcrumb.jsx'
+
+const phoneNumber = '+233257624221'
+const email = 'support@furniuxe.com'
 
 const info = [
   { icon: MapPin, label: 'Address', value: 'Kotwi, Kumasi- Ashanti Region' },
-  { icon: Phone, label: 'Phone', value: '+233257624221' },
-  { icon: Mail, label: 'Email', value: 'support@furniuxe.com' },
+  { icon: Phone, label: 'Phone', type: 'phone' },
+  { icon: Mail, label: 'Email', type: 'email' },
   { icon: Clock, label: 'Hours', value: 'Mon - Fri: 9:00 AM - 6:00 PM\nSat - Sun: 10:00 AM - 4:00 PM' },
 ]
 
@@ -34,7 +37,25 @@ export default function Contact() {
                 </span>
                 <div>
                   <p className="text-sm font-medium">{item.label}</p>
-                  <p className="text-sm text-ink-muted whitespace-pre-line mt-0.5">{item.value}</p>
+                  {item.type === 'phone' ? (
+                    <div className="flex items-center gap-4 mt-0.5">
+                      <a href={`tel:${phoneNumber}`} className="text-sm text-ink-muted hover:text-clay-500">Call</a>
+                      <a
+                        href={`https://wa.me/${phoneNumber.replace('+', '')}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1 text-sm text-ink-muted hover:text-clay-500"
+                      >
+                        <MessageCircle size={14} /> WhatsApp
+                      </a>
+                    </div>
+                  ) : item.type === 'email' ? (
+                    <a href={`mailto:${email}`} className="text-sm text-ink-muted hover:text-clay-500 block mt-0.5">
+                      {email}
+                    </a>
+                  ) : (
+                    <p className="text-sm text-ink-muted whitespace-pre-line mt-0.5">{item.value}</p>
+                  )}
                 </div>
               </li>
             ))}

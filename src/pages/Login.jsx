@@ -1,10 +1,37 @@
+import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { useAuth } from '../context/AuthContext.jsx'
 
 export default function Login() {
   const navigate = useNavigate()
+  const { login } = useAuth()
+  const [getinput, setGetInput] = useState({
+    email: "",
+    password: ""
+  })
+  const [error, setError] = useState("")
+
+  const formHandler = (e) => {
+    setGetInput((prev) => ({ ...prev, [e.target.id]: e.target.value }))
+  }
 
   function handleSubmit(e) {
     e.preventDefault()
+
+    // look up the users saved during registration
+    const users = JSON.parse(localStorage.getItem('users')) || []
+
+    const matchedUser = users.find(
+      (user) => user.email === getinput.email && user.password === getinput.password
+    )
+
+    if (!matchedUser) {
+      setError("Incorrect email or password")
+      return
+    }
+
+    setError("")
+    login(matchedUser)
     navigate('/')
   }
 
@@ -16,12 +43,14 @@ export default function Login() {
 
         <form onSubmit={handleSubmit} className="space-y-4 mt-6">
           <div>
-            <label className="text-sm font-medium block mb-1.5">Email Address</label>
-            <input required type="email" className="input-field" placeholder="you@example.com" />
+            <label htmlFor="email" className="text-sm font-medium block mb-1.5">Email Address</label>
+            <input required type="email" className="input-field" id="email" value={getinput.email} placeholder="you@example.com"
+            onChange={formHandler} />
           </div>
           <div>
-            <label className="text-sm font-medium block mb-1.5">Password</label>
-            <input required type="password" className="input-field" placeholder="••••••••" />
+            <label htmlFor="password" className="text-sm font-medium block mb-1.5">Password</label>
+            <input required type="password" className="input-field" id="password" value={getinput.password} placeholder="••••••••"
+            onChange={formHandler} />
           </div>
           <div className="flex items-center justify-between text-sm">
             <label className="flex items-center gap-2 text-ink-muted">
@@ -29,6 +58,7 @@ export default function Login() {
             </label>
             <a href="#" className="text-clay-500 font-medium">Forgot password?</a>
           </div>
+          {error && <p className="text-sm text-red-600">{error}</p>}
           <button type="submit" className="btn-primary w-full">Login</button>
         </form>
 

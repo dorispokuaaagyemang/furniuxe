@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight, ChevronLeft, ChevronRight, Truck, ShieldCheck, RotateCcw, Headset } from 'lucide-react'
 import Placeholder from '../components/Placeholder.jsx'
@@ -11,9 +12,31 @@ const features = [
   { icon: Headset, title: '24/7 Support', desc: "We're here to help" },
 ]
 
+const heroSlides = [
+  { src: '/images/hero/hero.jpg', alt: 'Modern living room with a beige sofa', icon: 'sofa' },
+  { src: '/images/categories/bedroom.jpg', alt: 'Cozy modern bedroom', icon: 'bed' },
+  { src: '/images/categories/dining-room.jpg', alt: 'Elegant modern dining room', icon: 'table' },
+]
+
 const popularPicks = products.slice(0, 4)
 
 export default function Home() {
+  const [slide, setSlide] = useState(0)
+
+  function prevSlide() {
+    setSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length)
+  }
+
+  function nextSlide() {
+    setSlide((prev) => (prev + 1) % heroSlides.length)
+  }
+
+  // auto-advance the hero slides every 5 seconds
+  useEffect(() => {
+    const timer = setInterval(nextSlide, 5000)
+    return () => clearInterval(timer)
+  }, [])
+
   return (
     <div>
       {/* Hero */}
@@ -34,23 +57,36 @@ export default function Home() {
                 <Link to="/shop" className="btn-secondary">Explore Collections</Link>
               </div>
             </div>
-            <div className="relative min-h-[320px] lg:min-h-0">
-              <Placeholder src="/images/hero/hero.jpg" alt="Modern living room with a beige sofa" icon="sofa" tone={0} className="w-full h-full" />
+            <div className="relative h-80 lg:h-auto">
+              <Placeholder
+                src={heroSlides[slide].src}
+                alt={heroSlides[slide].alt}
+                icon={heroSlides[slide].icon}
+                tone={slide}
+                className="w-full h-full"
+              />
               <button
                 aria-label="Previous slide"
+                onClick={prevSlide}
                 className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 flex items-center justify-center hover:bg-white"
               >
                 <ChevronLeft size={18} />
               </button>
               <button
                 aria-label="Next slide"
+                onClick={nextSlide}
                 className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 flex items-center justify-center hover:bg-white"
               >
                 <ChevronRight size={18} />
               </button>
               <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2">
-                {[0, 1, 2].map((i) => (
-                  <span key={i} className={`w-2 h-2 rounded-full ${i === 0 ? 'bg-clay-500' : 'bg-white/70'}`} />
+                {heroSlides.map((s, i) => (
+                  <button
+                    key={s.src}
+                    aria-label={`Go to slide ${i + 1}`}
+                    onClick={() => setSlide(i)}
+                    className={`w-2 h-2 rounded-full ${i === slide ? 'bg-clay-500' : 'bg-white/70'}`}
+                  />
                 ))}
               </div>
             </div>
