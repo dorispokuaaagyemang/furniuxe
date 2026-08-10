@@ -40,7 +40,7 @@ export default function Placeholder({ src, alt = '', icon = 'chair', tone = 0, c
 
   return (
     <div
-      className={`flex items-center justify-center bg-gradient-to-br ${TONES[tone % TONES.length]} ${className}`}
+      className={`flex items-center justify-center bg-linear-to-br ${TONES[tone % TONES.length]} ${className}`}
     >
       <Icon className="w-1/4 h-1/4 text-ink/25" strokeWidth={1.25} />
     </div>
