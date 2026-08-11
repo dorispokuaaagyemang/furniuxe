@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom'
+ import { Routes, Route } from 'react-router-dom'
 import Layout from './components/Layout.jsx'
 import RequireAuth from './components/RequireAuth.jsx'
 import Home from './pages/Home.jsx'

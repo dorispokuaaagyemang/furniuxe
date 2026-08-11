@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { Sofa, Facebook, Instagram, Twitter, Phone, MessageCircle, Mail } from 'lucide-react'
 
-const phoneNumber = '+18881234567'
+const phoneNumber = '+ '
 const email = 'support@furniuxe.com'
 
 export default function Footer() {
