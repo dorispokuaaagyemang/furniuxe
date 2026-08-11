@@ -1,9 +1,9 @@
 export const categories = [
-  { id: 'living-room', name: 'Living Room', count: 32, image: '/images/categories/living-room.jpg' },
-  { id: 'bedroom', name: 'Bedroom', count: 24, image: '/images/categories/bedroom.jpg' },
-  { id: 'dining-room', name: 'Dining Room', count: 18, image: '/images/categories/dining-room.jpg' },
-  { id: 'office', name: 'Office', count: 20, image: '/images/categories/office.jpg' },
-  { id: 'outdoor', name: 'Outdoor', count: 15, image: '/images/categories/outdoor.jpg' },
+  { id: 'living-room', name: 'Living Room', count: 1, image: '/images/categories/living-room.jpg' },
+  { id: 'bedroom', name: 'Bedroom', count: 1, image: '/images/categories/bedroom.jpg' },
+  { id: 'dining-room', name: 'Dining Room', count: 1, image: '/images/categories/dining-room.jpg' },
+  { id: 'office', name: 'Office', count: 2, image: '/images/categories/office.jpg' },
+  { id: 'outdoor', name: 'Outdoor', count: 1, image: '/images/categories/outdoor.jpg' },
 ]
 
 export const products = [
